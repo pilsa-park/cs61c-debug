@@ -526,13 +526,8 @@ game_state_t *load_board(char *filename)
 
   while ((ch = fgetc(file)) != EOF)
   {
-    if (ch != '\n')
-    {
-      printf("%c", ch);
-    }
     if (ch == '\n')
     {
-      // printf("1");
       board[row_index] = realloc(board[row_index], sizeof(char) * (col_index + 1));
       board[row_index][col_index] = '\0';
       row_index += 1;
@@ -548,9 +543,9 @@ game_state_t *load_board(char *filename)
       {
         board[row_index] = realloc(board[row_index], sizeof(char) * (col_index + 2));
       }
-      // strcpy(&(board[row_index][col_index]), ch);
-      board[row_index][col_index] = ch;
-      board[row_index][col_index + 1] = '\0';
+      strcpy(&(board[row_index][col_index]), ch);
+      // board[row_index][col_index] = ch;
+      // board[row_index][col_index + 1] = '\0';
       col_index += 1;
     }
   }
